@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicación interactiva para administrar tareas personales">
+    <title>Gestor de Tareas</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <main class="contenedor">
+        <header class="encabezado">
+            <p class="etiqueta">ORGANIZA · PLANIFICA · AVANZA</p>
+            <h1>Gestor de <span>tareas</span></h1>
+            <p class="subtitulo">
+                Organiza tus pendientes y convierte tus objetivos en logros.
+            </p>
+        </header>
+
+        <section class="resumen" aria-label="Resumen de tareas">
+            <article class="tarjeta-resumen">
+                <span>Total de tareas</span>
+                <strong id="total-tareas">0</strong>
+            </article>
+            <article class="tarjeta-resumen">
+                <span>Pendientes</span>
+                <strong id="total-pendientes">0</strong>
+            </article>
+            <article class="tarjeta-resumen">
+                <span>Completadas</span>
+                <strong id="total-completadas">0</strong>
+            </article>
+        </section>
+
+        <section class="panel">
+            <h2>Añadir una nueva tarea</h2>
+
+            <form id="formulario-tarea">
+                <label for="nueva-tarea">Descripción de la tarea</label>
+
+                <div class="grupo-entrada">
+                    <input
+                        type="text"
+                        id="nueva-tarea"
+                        placeholder="Ej. Terminar mi actividad de JavaScript..."
+                        maxlength="120"
+                        required
+                    >
+                    <button type="submit" class="boton boton-principal">
+                        + Agregar tarea
+                    </button>
+                </div>
+            </form>
+
+            <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="panel">
+            <div class="encabezado-lista">
+                <div>
+                    <p class="etiqueta">TU ORGANIZACIÓN DIARIA</p>
+                    <h2>Mi lista de tareas</h2>
+                </div>
+                <span id="contador" class="contador">0 tareas</span>
+            </div>
+
+            <div id="estado-vacio" class="estado-vacio">
+                <div class="icono-vacio">✦</div>
+                <h3>¡Todo listo para comenzar!</h3>
+                <p>Agrega una tarea para empezar a organizarte.</p>
+            </div>
+
+            <ul id="lista-tareas" class="lista-tareas"></ul>
+
+            <div class="seccion-progreso">
+                <div class="texto-progreso">
+                    <span>Progreso de tus actividades</span>
+                    <strong id="porcentaje">0%</strong>
+                </div>
+
+                <div
+                    id="barra-progreso"
+                    class="barra-progreso"
+                    role="progressbar"
+                    aria-label="Porcentaje de tareas completadas"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                >
+                    <div id="relleno-progreso" class="relleno-progreso"></div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Un paso a la vez. Cada tarea cuenta.</p>
+        </footer>
+    </main>
+
+    <dialog id="dialogo-edicion" class="dialogo">
+        <form id="formulario-edicion">
+            <h2>Editar tarea</h2>
+            <label for="texto-edicion">Nueva descripción</label>
+
+            <input
+                type="text"
+                id="texto-edicion"
+                maxlength="120"
+                required
+            >
+
+            <div class="acciones-dialogo">
+                <button
+                    type="button"
+                    id="cancelar-edicion"
+                    class="boton boton-secundario"
+                >
+                    Cancelar
+                </button>
+
+                <button type="submit" class="boton boton-principal">
+                    Guardar cambios
+                </button>
+            </div>
+        </form>
+    </dialog>
+</body>
+</html>
